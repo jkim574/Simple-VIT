@@ -20,3 +20,4 @@ This repository contains a simple implementation of a Vision Transformer (ViT) m
   - q, k and v are further divided into H (=12) and fed to the parallel attention heads.
   - Outputs from attention heads are concatenated to form the vectors whose shape is the same as the encoder input.
   - The vectors go through an fc, a layer norm and an MLP block that has two fc layers.
+
