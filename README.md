@@ -1,6 +1,6 @@
 # Simple-VIT
 
-This repository contains a simple implementation of a Vision Transformer (ViT) model for image classification using PyTorch and the TIMM library. The project demonstrates fine-tuning a pre-trained ViT model, image preprocessing, patch extraction, position embedding visualization, and end-to-end inference.
+This repository demonstrates how to use a pre-trained Vision Transformer (ViT) model for image classification using the timm library. The provided code includes steps to preprocess an input image, perform inference using a pre-trained model, and visualize some internal workings of the model, such as the attention mechanism and classification logits.
 
 ## Features
 - Utilizes the pre-trained vit_base_patch16_224 model from the TIMM library.
@@ -10,15 +10,16 @@ This repository contains a simple implementation of a Vision Transformer (ViT) m
 - Visualizes the attention matrix to reveal relationships between different patches in the image.
 
 ## Steps
-1. Split Image into Patches
-  - The input image is split into N patches (N = 14 x 14 for ViT-Base) and converted to D=768 embedding vectors by learnable 2D convolution
-2. Add Position Embeddings
-  - To make patches position-aware, learnable 'position embedding' vectors are added to the patch embedding vectors. The position embedding vectors learn distance within the image thus neighboring ones have high similarity.
-3. Transformer Encoder
-  - N (=197) embedded vectors are fed to the L (=12) series encoders.
-  - The vectors are divided into query, key and value after expanded by an fc layer.
-  - q, k and v are further divided into H (=12) and fed to the parallel attention heads.
-  - Outputs from attention heads are concatenated to form the vectors whose shape is the same as the encoder input.
-  - The vectors go through an fc, a layer norm and an MLP block that has two fc layers.
+1. Loads the pre-trained Vision Transformer model.
+2. Sets up the image transformation pipeline to preprocess the input image.
+3. Downloads and sets up ImageNet class labels.
+4. Downloads and preprocesses a sample image (hammer.png).
+5. Performs inference on the sample image using the Vision Transformer model and prints the predicted class.
+6. Visualizes the similarities between positional embeddings.
+7. Computes and prints the shape of various intermediate tensors throughout the model, such as patch embeddings, positional embeddings, and transformer   input/output.
+8. Analyzes the attention mechanism in the first Transformer block.
+9. Computes and visualizes the attention matrix.
+10. Applies the classification head to the transformer output and plots the resulting logits.
+11. Prints the final classification result with the predicted class ID and label name.
 
   
